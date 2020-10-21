@@ -1,27 +1,27 @@
-class Loggster
-  def initialize app
+# frozen_string_literal: true
+
+# lib/metrics_reporter.rb
+#
+# A minimal rack middleware metrics reporter.
+require 'time'
+require 'rack'
+
+APP_ROOT ||= Pathname.new(__FILE__).parent.parent
+
+# The metrics reporter middleware.
+class MetricsReporter
+  def initialize app, logpath: nil
     @app = app
+    @logpath = :logpath.nil? ? Pathname.new(logpath) : (APP_ROOT / 'log.csv')
   end
 
   def call env
     start_time = Time.now
-    status, headers, body = @app.call env
+    status, headers, body = @app.call(env)
     end_time = Time.now
-
-    Dir.mkdir('logs') unless File.directory?('logs')
-    File.open('logs/server.log', 'a+') do |f|
-      f.write("[#{Time.now}] \"#{env['REQUEST_METHOD']} #{env['PATH_INFO']}\" #{status} Delta: #{end_time - start_time}s \n")
-    end
+    duration = start_time - end_time
+    @logpath.open(mode: 'a') { |logfile| logfile.write(duration) }
 
     [status, headers, body]
   end
 end
-
-class RackApp
-  def self.call env
-    [200, {'Content-Type' => 'text/html'}, ['Hi!']]
-  end
-end
-
-use Loggster
-run RackApp
