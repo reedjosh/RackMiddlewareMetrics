@@ -2,12 +2,12 @@
 A minimalist Application Performance Monitoring (APM) library for Ruby on Rails.
 
 Reports: 
-    - The time that the request enters the middleware.
-    - The time that it leaves the middleware.
-    - Request path
-    - The request's parameter list.
-    - MD5 hash value of the rendered output.
-    - Current thread and process ids.
+- The time that the request enters the middleware. 
+- The time that it leaves the middleware.
+- Request path
+- The request's parameter list.
+- MD5 hash value of the rendered output.
+- Current thread and process ids.
 
 Appends to a CSV file. 
 
