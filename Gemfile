@@ -11,3 +11,5 @@ end
 gem "rack", "~> 2.2"
 
 gem "thin", "~> 1.7"
+
+gem "rake", "~> 13.0"
