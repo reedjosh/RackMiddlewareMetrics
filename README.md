@@ -1,6 +1,8 @@
 # Metrics Reporter
 A minimalist Application Performance Monitoring (APM) library for Ruby on Rails.
 
+https://travis-ci.com/reedjosh/RackMiddlewareMetrics.svg?branch=main
+
 Reports: 
 - The time that the request enters the middleware. 
 - The time that it leaves the middleware.
