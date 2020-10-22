@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 group :development, :test do
   gem "rspec", "~> 3.9"
   gem 'solargraph', '~> 0.39.12'
@@ -20,5 +19,4 @@ gem "builder", "~> 3.2"
 
 gem "helix_runtime", "~> 0.7.5"
 
-gem 'md5_ruby_ext', :path => '/nfs/orto/home/joshuare/development_joshuare/RackMiddlewareMetrics/md5_ruby_ext'
-
+gem 'md5_ruby_ext', :path => 'md5_ruby_ext'
