@@ -18,11 +18,34 @@ class RackApp
   end
 end
 
+TESTOUTPUT_LOGFILE = (APP_ROOT / 'log.csv')
+
 describe MetricsReporter do
-  let(:file) { APP_ROOT / 'log.csv' }
-  it { expect(file).not_to(exist) }
-  it 'writes a timespan to csv logfile' do
-    described_class.new(RackApp).call(ENV)
+  before(:all) do
+    # Ensure no testing logfile exists.
+    (APP_ROOT / 'log.csv').delete rescue Errno::ENOENT
+
+    # Create metrics reporter only once.
+    @metrics_reporter = MetricsReporter.new(RackApp, logpath: TESTOUTPUT_LOGFILE)
   end
+
+  let(:file) { TESTOUTPUT_LOGFILE }
+
+  it 'writes a timespan to a new csv logfile' do
+    @metrics_reporter.call(ENV)
+  end
+
   it { expect(file).to(exist) }
+
+  it 'appends to currently existing logfile' do
+    @metrics_reporter.call(ENV)
+    expect(TESTOUTPUT_LOGFILE.readlines.count).to(eq(2))
+    @metrics_reporter.call(ENV)
+    expect(TESTOUTPUT_LOGFILE.readlines.count).to(eq(3))
+  end
+
+  after(:all) do
+    # Cleanup testing logfile.
+    (APP_ROOT / 'log.csv').delete rescue Errno::ENOENT
+  end
 end
