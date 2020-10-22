@@ -4,9 +4,10 @@ extern crate md5;
 
 ruby! {
     class MRubyExt {
-        def compute(body: String) {
+        def compute(body: String) -> String {
 	    let digest = md5::compute(body);
- 	    println!("{:?}", digest);
+            let ret = format!("{:x}", digest);
+ 	    return ret;
         }
     }
 }

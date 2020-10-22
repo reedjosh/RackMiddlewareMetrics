@@ -13,7 +13,7 @@ APP_ROOT ||= Pathname.new(__FILE__).parent.parent
 
 # The metrics reporter middleware.
 class MetricsReporter
-  def initialize app, logpath: nil
+  def initialize(app, logpath: nil)
     @app = app
     @logpath = :logpath.nil? ? Pathname.new(logpath) : (APP_ROOT / 'log.csv')
   end
@@ -29,8 +29,8 @@ class MetricsReporter
     thread_id =  Thread.current.object_id
     process_id = Process.pid
     md5 = MRubyExt.compute(body.join())
-    logline = [start_time, end_time, duration, uri, query_params, md5].join(',')
-    @logpath.open(mode: 'a') { |logfile| logfile.write(duration) }
+    logline = [start_time, end_time, duration, uri, query_params, md5].join(',') + "\n"
+    @logpath.open(mode: 'a') { |logfile| logfile.write(logline) }
 
     [status, headers, body]
   end
