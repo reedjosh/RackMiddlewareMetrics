@@ -5,6 +5,8 @@
 # A minimal rack middleware metrics reporter.
 require 'time'
 require 'rack'
+require 'thread'
+
 
 APP_ROOT ||= Pathname.new(__FILE__).parent.parent
 
@@ -20,6 +22,12 @@ class MetricsReporter
     status, headers, body = @app.call(env)
     end_time = Time.now
     duration = start_time - end_time
+    query_params = env['QUERY_STRING']
+    uri = "#{ env['rack.url_scheme'] }://#{ env['SERVER_NAME'] }"\
+          ":#{ env['SERVER_PORT'] }#{ env['PATH_INFO'] }"
+    thread_id =  Thread.current.object_id
+    process_id = Process.pid
+    logline = [start_time, end_time, duration, uri, query_params].join(',')
     @logpath.open(mode: 'a') { |logfile| logfile.write(duration) }
 
     [status, headers, body]
