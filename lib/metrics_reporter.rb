@@ -6,6 +6,7 @@
 require 'time'
 require 'rack'
 require 'thread'
+require 'md5_ruby_ext'
 
 
 APP_ROOT ||= Pathname.new(__FILE__).parent.parent
@@ -27,7 +28,8 @@ class MetricsReporter
           ":#{ env['SERVER_PORT'] }#{ env['PATH_INFO'] }"
     thread_id =  Thread.current.object_id
     process_id = Process.pid
-    logline = [start_time, end_time, duration, uri, query_params].join(',')
+    md5 = MRubyExt.compute(body.join())
+    logline = [start_time, end_time, duration, uri, query_params, md5].join(',')
     @logpath.open(mode: 'a') { |logfile| logfile.write(duration) }
 
     [status, headers, body]
