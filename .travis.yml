@@ -3,3 +3,7 @@ rvm:
  - 2.5
  - 2.6
  - 2.7
+
+matrix:
+  include:
+    rust: stable
