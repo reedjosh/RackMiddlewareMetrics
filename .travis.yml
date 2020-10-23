@@ -4,6 +4,5 @@ rvm:
  - 2.6
  - 2.7
 
-matrix:
-  include:
-    rust: stable
+before_install
+- curl https://sh.rustup.rs -sSf | sh -s -- -y
