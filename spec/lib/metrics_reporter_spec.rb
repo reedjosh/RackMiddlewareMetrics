@@ -9,9 +9,8 @@ require 'rack'
 
 APP_ROOT ||= Pathname.new(__FILE__).parent.parent
 
-ENV = Rack::MockRequest.env_for("http://example.com:8080/slug", {"REMOTE_ADDR" => "10.10.10.10"})
 
-# A simple rack app for testing.
+# A simple rack app for testing. 
 class RackApp
   def self.call _env
     [200, { 'Content-Type' => 'text/html' }, ['Hi!']]
