@@ -4,5 +4,5 @@ rvm:
  - 2.6
  - 2.7
 
-before_install
-- curl https://sh.rustup.rs -sSf | sh -s -- -y
+before_install:
+  - curl https://sh.rustup.rs -sSf | sh -s -- -y
