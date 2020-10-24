@@ -57,3 +57,4 @@ Gemfile.lock
 
 log.csv
 target
+lib/md5_ruby_ext
