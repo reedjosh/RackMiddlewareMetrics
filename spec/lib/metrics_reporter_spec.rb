@@ -9,11 +9,10 @@ require 'rack'
 
 APP_ROOT ||= Pathname.new(__FILE__).parent.parent
 
-
-# A simple rack app for testing. 
+# A simple rack app for testing.
 class RackApp
   def self.call _env
-    [200, { 'Content-Type' => 'text/html' }, ['Hi!']]
+    [200, { 'Content-Type' => 'text/html' }, ['Hi!']] # rubocop:disable Style/StringHashKeys
   end
 end
 
@@ -22,7 +21,7 @@ TESTOUTPUT_LOGFILE = (APP_ROOT / 'log.csv')
 describe MetricsReporter do
   before(:all) do
     # Ensure no testing logfile exists.
-    (APP_ROOT / 'log.csv').delete rescue Errno::ENOENT
+    (APP_ROOT / 'log.csv').delete if (APP_ROOT / 'log.csv').exist?
 
     # Create metrics reporter only once.
     @metrics_reporter = MetricsReporter.new(RackApp, logpath: TESTOUTPUT_LOGFILE)
