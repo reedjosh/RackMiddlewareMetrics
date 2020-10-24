@@ -6,7 +6,7 @@
 require 'time'
 require 'rack'
 require 'thread'
-require 'md5_ruby_ext'
+require 'md5_gen'
 
 
 APP_ROOT ||= Pathname.new(__FILE__).parent.parent
@@ -26,9 +26,9 @@ class MetricsReporter
     query_params = env['QUERY_STRING']
     uri = "#{ env['rack.url_scheme'] }://#{ env['SERVER_NAME'] }"\
           ":#{ env['SERVER_PORT'] }#{ env['PATH_INFO'] }"
-    thread_id =  Thread.current.object_id
+    hread_id =  Thread.current.object_id
     process_id = Process.pid
-    md5 = MRubyExt.compute(body.join())
+    md5 = MD5Gen.compute(body.join)
     logline = [start_time, end_time, duration, uri, query_params, md5].join(',') + "\n"
     @logpath.open(mode: 'a') { |logfile| logfile.write(logline) }
 
