@@ -11,8 +11,7 @@ before_install:
 
 deploy:
   provider: rubygems
-  api_key:
-    secure: s9Vwi2tZA/dd00eKVkJ/TAvK+7MU8oJxPBJVaePQB5W4dOB4zQ6sLNvZsAf6ch1cJB3L5Fh+ATQnKBp3YT/fUKyAC/R0SxL158HslhApUcOEdxCg0mHT3oLUx1G+rwzAljlUWRPXFp0wCr35xRmwj02QKyGugmEH7nvK55VBXyFzmgINN/r01ZApGqch7kU1A0QE1GfAFjhqdEVbTqE6BhAjqBqjh55N1FWZenFrjoxjT5yJ8+rU3X+66akitBPjEPk1MSq3o7DR3sFv4eMPY4VpUQM36vAVSxdY3Z+1XmAenfzKV/m5KU98UmgTjo1KGBPjHF9lqmHvGxT5eC3NNVaURS3IywfZMJiCakxxukQUdhklhk5r+iyAGi5GTEolevMXoz+OFkeXMOyarP9sjGhSSxx9lGQvNT7Hgezg19cVMNTuhUZ5523IkKuxQH1Wggofz1ZXhhn8ZEsQXdbqKziHd+e1LN+a7VO5i73Hx06bRwVCL+IutyznbvSrEJQGIEr1F+W6OkFc7tXAfOB8QFiBGTQ0/EdYmsXIz881L56s3Qt8fdtB/CxPTrUZu2SXB7dYnrYbCojzkOgQRQp2hsG4uBmwwaTL0iooufZ/fJu19uVGInQxll5DIVOiuOPB3fojFWxzkfxsp7Mcyjq7Kv5RKcdqgSrAuVIckymG4pk=
+  api_key: $API_KEY
   gem: RackMiddlewareMetrics
   on:
     tags: true
