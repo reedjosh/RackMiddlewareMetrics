@@ -15,7 +15,7 @@ end
 
 app =
   Rack::Builder.app do
-    use(RackMiddlewareMetrics::Reporter)
+    use(RackMiddlewareMetrics::Reporter, logpath: 'log2.csv')
     run(RackApp)
   end
 
