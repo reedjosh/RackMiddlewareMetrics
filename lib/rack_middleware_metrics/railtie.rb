@@ -4,7 +4,7 @@
 module RackMiddlewareMetrics
   # Rails init...
   class Railtie < Rails::Railtie
-    config.rack_middleware_metrics = ActiveSupport::HashWithIndifferentAccess.new
+    config.rack_middleware_metrics = ActiveSupport::OrderedOptions.new
     initializer 'rack_middleware_metrics.configure_rails_initialization' do |app|
       config.rack_middleware_metrics[:logpath] =
         config.rack_middleware_metrics.fetch(:logpath, Rails.root / 'rack_metrics.csv')
