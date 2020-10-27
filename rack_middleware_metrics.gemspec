@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require_relative 'lib/RackMiddlewareMetrics/version'
+require_relative 'lib/rack_middleware_metrics/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "RackMiddlewareMetrics"
+  spec.name          = "rack_middleware_metrics"
   spec.version       = RackMiddlewareMetrics::VERSION
   spec.authors       = ["reedjosh"]
   spec.email         = ["reedjosh@oregonstate.edu"]

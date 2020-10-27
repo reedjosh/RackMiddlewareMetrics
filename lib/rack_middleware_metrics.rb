@@ -1,4 +1,4 @@
-require "RackMiddlewareMetrics/version"
+require "rack_middleware_metrics/version"
 
 module RackMiddlewareMetrics
   class Error < StandardError; end
