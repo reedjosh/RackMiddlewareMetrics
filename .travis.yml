@@ -11,7 +11,7 @@ deploy:
   provider: rubygems
   api_key:
     secure: cJgoY38KR4cqoVCbNsQaXbqKMbXCSh/JOxHXpKIodP0IzdqBwO2+JyuUnIKW9oq4CMlj7V8bNUMmY3Bce0NZoSFDc+A1SbogWFDn7BHcHjU5zgC0XiPcY04u3/oK2iI6zmZN+ANg3JWqTKcF1pBN/y5u8S8Q5S1ZWsnwg7/VzDZseDRLJVR7r8g83Bnus7oD+nGU8Cibi7I4rJNjfp3k9flKSzysm9EMs+GBuw52ESUyfUpqoMWVlz4KljWWUjgV3dX4OV6bH/UlVHg7I0hcNUkQepweNydiT6J3eQmDLN2msYZs/os8ivZPrsMY4V1SZYtn8iXPzeaW7keCJNtcjh4I9WFf00NE/R0/IWBl6fPOqTfddxgBd7lst+3N47R/pGJBVayRhskYTUPmIBymo065oGoVQiPUKQ3F5cz6OCjuW40GSyxmW5AL+hKQWPqBJossv5RgXP/pYPWW1pluwdCYRbROYfH+JrxWuU5VQJZ49Q7otK+/KEamJwbFg5R115aJS3rrQ4cTmH5uTwvDkQfCJ2VDVvGy5zzLGl96ewY+uOd7HoykjyBUkEe52V01B+MublXrzgXmd5VFcpFPXF6aQ9jxrb6SD5YOXjYneZd20omeOzzKAbFPvuFyYL5dktf75pFqis13z5CleLs7/MupgT8BFuC7cxuZk+tglLQ=
-  gem: RackMiddlewareMetrics
+  gem: rack_middleware_metrics
   on:
     tags: true
     repo: reedjosh/RackMiddlewareMetrics
