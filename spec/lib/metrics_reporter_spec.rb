@@ -3,7 +3,7 @@
 # spec/lib/metrics_reporter_spec.rb
 #
 # TODO: Find a more idomatic way to spoof a rack app. I'm sure there's something out there...
-require 'metrics_reporter'
+require 'rack_middleware_metrics'
 require 'spec_helper'
 require 'rack'
 
@@ -18,13 +18,13 @@ end
 
 TESTOUTPUT_LOGFILE = (APP_ROOT / 'log.csv')
 
-describe MetricsReporter do
+describe RackMiddlewareMetrics::Reporter do
   before(:all) do
     # Ensure no testing logfile exists.
-    (APP_ROOT / 'log.csv').delete if (APP_ROOT / 'log.csv').exist?
+    TESTOUTPUT_LOGFILE.delete if TESTOUTPUT_LOGFILE.exist?
 
     # Create metrics reporter only once.
-    @metrics_reporter = MetricsReporter.new(RackApp, logpath: TESTOUTPUT_LOGFILE)
+    @metrics_reporter = RackMiddlewareMetrics::Reporter.new(RackApp, logpath: TESTOUTPUT_LOGFILE)
   end
 
   let(:file) { TESTOUTPUT_LOGFILE }
@@ -44,6 +44,6 @@ describe MetricsReporter do
 
   after(:all) do
     # Cleanup testing logfile.
-    (APP_ROOT / 'log.csv').delete rescue Errno::ENOENT
+    TESTOUTPUT_LOGFILE.delete if TESTOUTPUT_LOGFILE.exist?
   end
 end
