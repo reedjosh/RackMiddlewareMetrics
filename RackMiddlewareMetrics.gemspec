@@ -3,7 +3,7 @@
 require_relative 'lib/rack_middleware_metrics/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "rack_middleware_metrics"
+  spec.name          = "RackMiddlewareMetrics"
   spec.version       = RackMiddlewareMetrics::VERSION
   spec.authors       = ["reedjosh"]
   spec.email         = ["reedjosh@oregonstate.edu"]
