@@ -3,7 +3,7 @@
 A minimalist Application Performance Monitoring (APM) library for Ruby on Rails.
 
 
-The middleware generates a CSV file with the following fields:
+The middleware generates a CSV file with the followinfg fields (no header):
 - Request Time: the timestamp when the request enters the middleware
 - Response Time: the timestamp when the response leaves the middleware
 - Elapsed Time: the time betwen request and response
@@ -52,9 +52,17 @@ The middleware is automatically registered with Rails. But to configure the logp
 ```
 to `config/environments/*.rb`
 
-## Etc... Notes
-TODO: Add the Gem to an open source Ruby on Rails project (RedMine, Discourse, etc) and generate 
-a performance metrics CSV file.
+## Example Output from Redmine Rails Project
+
+| Start                   | End                     | Duration(S) | URI                          | Params                | Thread       | PID | MD5                             |
+|-------------------------|-------------------------|-------------|------------------------------|-----------------------|--------------|-----|---------------------------------|
+|2020-10-27 13:32:46 -0700|2020-10-27 13:32:47 -0700|-0.698014072 |http://localhost:3000/        |                       |55890640      |18581|1724d0f493f9ed2e191d9aeb49df0f4c |
+|2020-10-27 13:33:07 -0700|2020-10-27 13:33:07 -0700|-0.02697148  |http://localhost:3000/        |                       |70368509891620|18581|80eabd1e0373408b0a40b08b0eec6c3f |
+|2020-10-28 09:40:16 -0700|2020-10-28 09:40:16 -0700|-0.717337538 |http://localhost:3000/        |                       |55777940      |16173|89ab1d3fcc2d9dcdef4a50d79e9dcaff |
+|2020-10-28 09:40:41 -0700|2020-10-28 09:40:41 -0700|-0.103701273 |http://localhost:3000/projects|                       |55777940      |16173|d2ddd9efc455f83cb24060e6593d6c6c |
+|2020-10-28 09:41:44 -0700|2020-10-28 09:41:44 -0700|-0.051811471 |http://localhost:3000/projects|blah=funk              |70368510966560|16173|eb2dacf2043e866a9e8925e53d471e6f |
+|2020-10-28 09:44:02 -0700|2020-10-28 09:44:03 -0700|-0.831327261 |http://localhost:3000/projects|blah=funk;?blah2=2funky|55777780      |17355|40895fa7af099cae3f48b27f149beb30 |
+
 
 ## Development
 
