@@ -28,16 +28,17 @@ describe RackMiddlewareMetrics::Reporter do # rubocop:disable Metrics/BlockLengt
     @metrics_reporter = RackMiddlewareMetrics::Reporter.new(RackApp, logpath: TESTOUTPUT_LOGFILE)
   end
 
-  # before(:each) do TESTOUTPUT_LOGFILE.delete if TESTOUTPUT_LOGFILE.exist? end
-  # after(:each) do TESTOUTPUT_LOGFILE.delete if TESTOUTPUT_LOGFILE.exist? end
+  before(:each) do TESTOUTPUT_LOGFILE.delete if TESTOUTPUT_LOGFILE.exist? end
+  after(:each) do TESTOUTPUT_LOGFILE.delete if TESTOUTPUT_LOGFILE.exist? end
 
   let(:file) { TESTOUTPUT_LOGFILE }
 
   it 'writes a timespan to a new csv logfile' do
+    expect(file).not_to(exist)
     @metrics_reporter.call(TEST_ENV)
+    expect(file).to(exist)
   end
 
-  it { expect(file).to(exist) }
 
   it 'appends to logfile' do
     @metrics_reporter.call(TEST_ENV)
