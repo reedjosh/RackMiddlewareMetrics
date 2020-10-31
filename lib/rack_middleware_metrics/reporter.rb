@@ -6,6 +6,8 @@
 require 'time'
 require 'rack'
 require 'md5_gen'
+require 'uri'
+require 'csv'
 
 # The main Gem...
 module RackMiddlewareMetrics
@@ -24,6 +26,15 @@ module RackMiddlewareMetrics
             ":#{ env['SERVER_PORT'] }#{ env['PATH_INFO'] }"
     end
 
+    def params_from env
+      # Convert to semicolon delimiter.
+      # Replace original semicolons with %3B the ASCII escape equivalent.
+      # See https://www.december.com/html/spec/esccodes.html for more details.
+      params = Hash[URI.decode_www_form(env['QUERY_STRING'])]
+      params = params.map { |key, val| "#{ key }=#{ val }" }
+      params.map { |param| param.gsub(';', '%3B') }.join(';')
+    end
+
     def timed_call env
       start_time = Time.now
       response = @app.call(env)
@@ -33,14 +44,15 @@ module RackMiddlewareMetrics
     end
 
     def append_data data
-      logline = "#{ data.join(',') }\n"
-      @logpath.open(mode: 'a') { |logfile| logfile.write(logline) }
+      CSV.open(@logpath, 'a') do |csv|
+        csv << data
+      end
     end
 
     def call env
       status, headers, body, timing = timed_call(env)
 
-      query_params = env['QUERY_STRING']
+      query_params = params_from(env)
       uri = uri_from(env)
       thread_id =  Thread.current.object_id
       process_id = Process.pid
