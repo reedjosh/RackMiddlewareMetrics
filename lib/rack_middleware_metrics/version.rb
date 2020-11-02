@@ -1,3 +1,3 @@
 module RackMiddlewareMetrics
-  VERSION ||= "0.0.1"
+  VERSION ||= "0.0.7"
 end
