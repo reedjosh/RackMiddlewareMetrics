@@ -4,7 +4,7 @@
 #
 # TODO: Find a more idomatic way to spoof a rack app. I'm sure there's something out there...
 require 'rack_middleware_metrics'
-#require 'spec_helper'
+require 'spec_helper'
 require 'rack'
 
 APP_ROOT ||= Pathname.new(__FILE__).parent.parent.parent

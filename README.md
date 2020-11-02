@@ -19,7 +19,7 @@ Optionally: Does MD5 calculation in Rust if native extention is built.
 
 ## Getting Started
 
-[Yard Docs](https://rubydoc.info/github/reedjosh/RackMiddlewareMetrics/main)
+[Yard Docs](https://rubydoc.info/github/reedjosh/RackMiddlewareMetrics)
 
 ### Installation
 Install from [ruby gems](https://rubygems.org/gems/rack_middleware_metrics)

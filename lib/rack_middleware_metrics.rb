@@ -6,6 +6,6 @@ require 'rack_middleware_metrics/reporter'
 
 require 'rack_middleware_metrics/railtie' if defined?(Rails)
 
+# A minimalist Application Performance Monitoring (APM) library for Ruby on Rails.
 module RackMiddlewareMetrics
-  class Error < StandardError; end
 end

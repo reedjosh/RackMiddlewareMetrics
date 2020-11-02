@@ -2,7 +2,7 @@
 
 # lib/rack_middleware_metrics/railtie.rb
 module RackMiddlewareMetrics
-  # Rails init...
+  # Rails railtie plugin. Adds configuration, startup, and md5 ext build task.
   class Railtie < Rails::Railtie
     config.rack_middleware_metrics = ActiveSupport::OrderedOptions.new
     initializer 'rack_middleware_metrics.configure_rails_initialization' do |app|
