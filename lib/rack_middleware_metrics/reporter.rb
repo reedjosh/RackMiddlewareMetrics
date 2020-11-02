@@ -39,7 +39,7 @@ module RackMiddlewareMetrics
       start_time = Time.now
       response = @app.call(env)
       end_time = Time.now
-      duration = start_time - end_time
+      duration = end_time - start_time
       [*response, [start_time, end_time, duration]]
     end
 
