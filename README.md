@@ -9,9 +9,9 @@ The middleware generates a CSV file with the followinfg fields (no header):
 - Elapsed Time: the time betwen request and response
 - Path: the URI of the request
 - Params: a semi-colon delimited list of GET parameters
-- MD5: the hash value of the response body
-- Process ID: the process ID of the current request
 - Thread ID: the thread ID of the current request
+- Process ID: the process ID of the current request
+- MD5: the hash value of the response body
 
 The location and name of the file are configurable by the user. 
 
